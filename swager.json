@@ -1,0 +1,7416 @@
+{
+"openapi": "3.0.1",
+"info": {
+"title": "Template Swagger Doc",
+"version": "v1"
+},
+"paths": {
+"/api/Account/login": {
+"post": {
+"tags": [
+"Account"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/LoginRequestDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/LoginRequestDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/LoginRequestDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/LoginRequestDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Account/StudentProfileDetails/userId": {
+"get": {
+"tags": [
+"Account"
+],
+"parameters": [
+{
+"name": "userId",
+"in": "query",
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Account/SignUp": {
+"post": {
+"tags": [
+"Account"
+],
+"requestBody": {
+"content": {
+"multipart/form-data": {
+"schema": {
+"required": [
+"ConfirmPassword",
+"Email",
+"FirstName",
+"LastName",
+"Password",
+"UserRoleType"
+],
+"type": "object",
+"properties": {
+"FirstName": {
+"type": "string"
+},
+"LastName": {
+"type": "string"
+},
+"Email": {
+"pattern": "^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$",
+"type": "string"
+},
+"Password": {
+"maxLength": 100,
+"minLength": 8,
+"pattern": "^((?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])|(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[^a-zA-Z0-9])|(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[^a-zA-Z0-9])|(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^a-zA-Z0-9])).{8,}$",
+"type": "string",
+"format": "password"
+},
+"ConfirmPassword": {
+"maxLength": 100,
+"minLength": 8,
+"type": "string",
+"format": "password"
+},
+"UserRoleType": {
+"$ref": "#/components/schemas/UserRoleType"
+}
+}
+},
+"encoding": {
+"FirstName": {
+"style": "form"
+},
+"LastName": {
+"style": "form"
+},
+"Email": {
+"style": "form"
+},
+"Password": {
+"style": "form"
+},
+"ConfirmPassword": {
+"style": "form"
+},
+"UserRoleType": {
+"style": "form"
+}
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Account/ConfirmEmail": {
+"get": {
+"tags": [
+"Account"
+],
+"parameters": [
+{
+"name": "token",
+"in": "query",
+"schema": {
+"type": "string"
+}
+},
+{
+"name": "email",
+"in": "query",
+"schema": {
+"type": "string"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Account/UpdateStudentProfile/userId": {
+"put": {
+"tags": [
+"Account"
+],
+"requestBody": {
+"content": {
+"multipart/form-data": {
+"schema": {
+"required": [
+"userId"
+],
+"type": "object",
+"properties": {
+"FirstName": {
+"type": "string"
+},
+"LastName": {
+"type": "string"
+},
+"Email": {
+"type": "string"
+},
+"userId": {
+"type": "string",
+"format": "uuid"
+},
+"ProfileImage": {
+"type": "string"
+},
+"AddressLine1": {
+"type": "string"
+},
+"AddressLine2": {
+"type": "string"
+},
+"StateId": {
+"type": "string",
+"format": "uuid"
+},
+"DesignationId": {
+"type": "string",
+"format": "uuid"
+},
+"City": {
+"type": "string"
+},
+"PostalCode": {
+"type": "string"
+},
+"GenderId": {
+"type": "string",
+"format": "uuid"
+},
+"Address": {
+"type": "string"
+},
+"Age": {
+"type": "integer",
+"format": "int32"
+},
+"QualificationId": {
+"type": "string",
+"format": "uuid"
+},
+"Qualification": {
+"type": "string"
+},
+"Interests": {
+"type": "array",
+"items": {
+"type": "string"
+}
+},
+"Skills": {
+"type": "array",
+"items": {
+"type": "string"
+}
+},
+"CollegeId": {
+"type": "string",
+"format": "uuid"
+},
+"ExperienceInYears": {
+"type": "integer",
+"format": "int32"
+},
+"ExperienceInMonths": {
+"type": "integer",
+"format": "int32"
+},
+"ExpectedSalary": {
+"type": "number",
+"format": "double"
+},
+"WorkHoursPerDay": {
+"type": "number",
+"format": "double"
+},
+"WorkDaysPerWeek": {
+"type": "integer",
+"format": "int32"
+},
+"Timezone": {
+"type": "string"
+},
+"WorkingType": {
+"type": "integer",
+"format": "int32"
+},
+"ResumeFile": {
+"type": "string",
+"format": "binary"
+}
+}
+},
+"encoding": {
+"FirstName": {
+"style": "form"
+},
+"LastName": {
+"style": "form"
+},
+"Email": {
+"style": "form"
+},
+"userId": {
+"style": "form"
+},
+"ProfileImage": {
+"style": "form"
+},
+"AddressLine1": {
+"style": "form"
+},
+"AddressLine2": {
+"style": "form"
+},
+"StateId": {
+"style": "form"
+},
+"DesignationId": {
+"style": "form"
+},
+"City": {
+"style": "form"
+},
+"PostalCode": {
+"style": "form"
+},
+"GenderId": {
+"style": "form"
+},
+"Address": {
+"style": "form"
+},
+"Age": {
+"style": "form"
+},
+"QualificationId": {
+"style": "form"
+},
+"Qualification": {
+"style": "form"
+},
+"Interests": {
+"style": "form"
+},
+"Skills": {
+"style": "form"
+},
+"CollegeId": {
+"style": "form"
+},
+"ExperienceInYears": {
+"style": "form"
+},
+"ExperienceInMonths": {
+"style": "form"
+},
+"ExpectedSalary": {
+"style": "form"
+},
+"WorkHoursPerDay": {
+"style": "form"
+},
+"WorkDaysPerWeek": {
+"style": "form"
+},
+"Timezone": {
+"style": "form"
+},
+"WorkingType": {
+"style": "form"
+},
+"ResumeFile": {
+"style": "form"
+}
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Account/UpdateEmployeeProfile/userId": {
+"put": {
+"tags": [
+"Account"
+],
+"parameters": [
+{
+"name": "userId",
+"in": "query",
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"requestBody": {
+"content": {
+"multipart/form-data": {
+"schema": {
+"type": "object",
+"properties": {
+"FirstName": {
+"type": "string"
+},
+"LastName": {
+"type": "string"
+},
+"Email": {
+"type": "string"
+},
+"LogoUrl": {
+"type": "string"
+},
+"Address": {
+"type": "string"
+},
+"RecruitingManagerName": {
+"type": "string"
+},
+"CompanyPhone": {
+"type": "string"
+},
+"CompanyName": {
+"type": "string"
+},
+"StateId": {
+"type": "string",
+"format": "uuid"
+},
+"CityName": {
+"type": "string"
+}
+}
+},
+"encoding": {
+"FirstName": {
+"style": "form"
+},
+"LastName": {
+"style": "form"
+},
+"Email": {
+"style": "form"
+},
+"LogoUrl": {
+"style": "form"
+},
+"Address": {
+"style": "form"
+},
+"RecruitingManagerName": {
+"style": "form"
+},
+"CompanyPhone": {
+"style": "form"
+},
+"CompanyName": {
+"style": "form"
+},
+"StateId": {
+"style": "form"
+},
+"CityName": {
+"style": "form"
+}
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Account/forgot-password": {
+"post": {
+"tags": [
+"Account"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/ForgotPasswordRequestDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/ForgotPasswordRequestDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/ForgotPasswordRequestDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/ForgotPasswordRequestDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Account/reset-password": {
+"post": {
+"tags": [
+"Account"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/ResetPasswordRequestDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/ResetPasswordRequestDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/ResetPasswordRequestDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/ResetPasswordRequestDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Account/EmployeeProfileDetails": {
+"get": {
+"tags": [
+"Account"
+],
+"parameters": [
+{
+"name": "userId",
+"in": "query",
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Account/StudentProfileEditor": {
+"post": {
+"tags": [
+"Account"
+],
+"requestBody": {
+"content": {
+"multipart/form-data": {
+"schema": {
+"required": [
+"Address",
+"AddressLine1",
+"Age",
+"City",
+"CourseStatus",
+"ExpectedSalary",
+"ExperienceInMonths",
+"ExperienceInYears",
+"GenderId",
+"Interests",
+"PhoneNumber",
+"PostalCode",
+"Skills",
+"StartDate",
+"StateId",
+"WorkHoursPerWeek",
+"WorkingTypes"
+],
+"type": "object",
+"properties": {
+"GenderId": {
+"type": "string",
+"format": "uuid"
+},
+"Address": {
+"type": "string"
+},
+"AddressLine1": {
+"type": "string"
+},
+"AddressLine2": {
+"type": "string"
+},
+"Age": {
+"type": "integer",
+"format": "int32"
+},
+"StateId": {
+"type": "string",
+"format": "uuid"
+},
+"City": {
+"type": "string"
+},
+"PhoneNumber": {
+"type": "string"
+},
+"PostalCode": {
+"type": "string"
+},
+"Timezone": {
+"type": "string"
+},
+"QualificationId": {
+"type": "string",
+"format": "uuid"
+},
+"Qualification": {
+"type": "string"
+},
+"StartDate": {
+"type": "string",
+"format": "date-time"
+},
+"EndDate": {
+"type": "string",
+"format": "date-time"
+},
+"Interests": {
+"type": "array",
+"items": {
+"type": "string"
+}
+},
+"CollegeId": {
+"type": "string",
+"format": "uuid"
+},
+"CollegeOthers": {
+"type": "string"
+},
+"ExperienceInYears": {
+"type": "integer",
+"format": "int32"
+},
+"ExperienceInMonths": {
+"type": "integer",
+"format": "int32"
+},
+"ExpectedSalary": {
+"type": "number",
+"format": "double"
+},
+"WorkHoursPerWeek": {
+"type": "integer",
+"format": "int32"
+},
+"CategoryOfJob": {
+"type": "string"
+},
+"Skills": {
+"type": "array",
+"items": {
+"type": "string"
+}
+},
+"WorkingTypes": {
+"$ref": "#/components/schemas/WorkingTypes"
+},
+"Location": {
+"type": "string"
+},
+"ResumeFile": {
+"type": "string",
+"format": "binary"
+},
+"CoverLetter": {
+"type": "string",
+"format": "binary"
+},
+"UserId": {
+"type": "string",
+"format": "uuid"
+},
+"OperationType": {
+"$ref": "#/components/schemas/OperationType"
+},
+"CourseStatus": {
+"$ref": "#/components/schemas/CourseStatus"
+}
+}
+},
+"encoding": {
+"GenderId": {
+"style": "form"
+},
+"Address": {
+"style": "form"
+},
+"AddressLine1": {
+"style": "form"
+},
+"AddressLine2": {
+"style": "form"
+},
+"Age": {
+"style": "form"
+},
+"StateId": {
+"style": "form"
+},
+"City": {
+"style": "form"
+},
+"PhoneNumber": {
+"style": "form"
+},
+"PostalCode": {
+"style": "form"
+},
+"Timezone": {
+"style": "form"
+},
+"QualificationId": {
+"style": "form"
+},
+"Qualification": {
+"style": "form"
+},
+"StartDate": {
+"style": "form"
+},
+"EndDate": {
+"style": "form"
+},
+"Interests": {
+"style": "form"
+},
+"CollegeId": {
+"style": "form"
+},
+"CollegeOthers": {
+"style": "form"
+},
+"ExperienceInYears": {
+"style": "form"
+},
+"ExperienceInMonths": {
+"style": "form"
+},
+"ExpectedSalary": {
+"style": "form"
+},
+"WorkHoursPerWeek": {
+"style": "form"
+},
+"CategoryOfJob": {
+"style": "form"
+},
+"Skills": {
+"style": "form"
+},
+"WorkingTypes": {
+"style": "form"
+},
+"Location": {
+"style": "form"
+},
+"ResumeFile": {
+"style": "form"
+},
+"CoverLetter": {
+"style": "form"
+},
+"UserId": {
+"style": "form"
+},
+"OperationType": {
+"style": "form"
+},
+"CourseStatus": {
+"style": "form"
+}
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Account/CompanyProfileEditor": {
+"post": {
+"tags": [
+"Account"
+],
+"requestBody": {
+"content": {
+"multipart/form-data": {
+"schema": {
+"required": [
+"Address",
+"CompanyName",
+"CompanyPhone"
+],
+"type": "object",
+"properties": {
+"LogoUrl": {
+"type": "string"
+},
+"Address": {
+"type": "string"
+},
+"CompanyPhone": {
+"type": "string"
+},
+"CompanyName": {
+"type": "string"
+},
+"UserId": {
+"type": "string",
+"format": "uuid"
+},
+"OperationType": {
+"$ref": "#/components/schemas/OperationType"
+}
+}
+},
+"encoding": {
+"LogoUrl": {
+"style": "form"
+},
+"Address": {
+"style": "form"
+},
+"CompanyPhone": {
+"style": "form"
+},
+"CompanyName": {
+"style": "form"
+},
+"UserId": {
+"style": "form"
+},
+"OperationType": {
+"style": "form"
+}
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Admin/GetUserListByRole": {
+"post": {
+"tags": [
+"Admin"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/UserSearchDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/UserSearchDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/UserSearchDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/UserSearchDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Admin/UpdateKycStatus": {
+"put": {
+"tags": [
+"Admin"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/UpdateKycStatusRequest"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/UpdateKycStatusRequest"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/UpdateKycStatusRequest"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/UpdateKycStatusRequest"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Admin/EmailConfirmation": {
+"post": {
+"tags": [
+"Admin"
+],
+"parameters": [
+{
+"name": "Email",
+"in": "query",
+"schema": {
+"type": "string"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Admin/GetImageByKey": {
+"get": {
+"tags": [
+"Admin"
+],
+"parameters": [
+{
+"name": "key",
+"in": "query",
+"schema": {
+"type": "string"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/BuyConnect": {
+"get": {
+"tags": [
+"BuyConnect"
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/BuyConnect/BuyConnects": {
+"post": {
+"tags": [
+"BuyConnect"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/BuyConnectRequestDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/BuyConnectRequestDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/BuyConnectRequestDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/BuyConnectRequestDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/BuyConnect/{paymentId}": {
+"put": {
+"tags": [
+"BuyConnect"
+],
+"parameters": [
+{
+"name": "paymentId",
+"in": "path",
+"required": true,
+"schema": {
+"type": "string"
+}
+}
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/UpdatePaymentRequestDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/UpdatePaymentRequestDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/UpdatePaymentRequestDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/UpdatePaymentRequestDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/City/CityList": {
+"get": {
+"tags": [
+"City"
+],
+"parameters": [
+{
+"name": "stateId",
+"in": "query",
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/City/GetCity/cityId": {
+"get": {
+"tags": [
+"City"
+],
+"parameters": [
+{
+"name": "cityId",
+"in": "query",
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/City/DeleteCity/cityId": {
+"delete": {
+"tags": [
+"City"
+],
+"parameters": [
+{
+"name": "cityId",
+"in": "query",
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/City/AddCountry": {
+"post": {
+"tags": [
+"City"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/CityRequestDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/CityRequestDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/CityRequestDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/CityRequestDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/City/EditCity/cityId": {
+"put": {
+"tags": [
+"City"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/EditCityRequestDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/EditCityRequestDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/EditCityRequestDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/EditCityRequestDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/College": {
+"get": {
+"tags": [
+"College"
+],
+"parameters": [
+{
+"name": "CountryId",
+"in": "query",
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/College/GetCollege/collegeId": {
+"get": {
+"tags": [
+"College"
+],
+"parameters": [
+{
+"name": "collegeId",
+"in": "query",
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/College/DeleteCollege/collegeId": {
+"delete": {
+"tags": [
+"College"
+],
+"parameters": [
+{
+"name": "collegeId",
+"in": "query",
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/College/AddCollege": {
+"post": {
+"tags": [
+"College"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/CollegeRequestDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/CollegeRequestDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/CollegeRequestDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/CollegeRequestDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/College/EditCollege/collegeId": {
+"put": {
+"tags": [
+"College"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/EditCollegeRequestDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/EditCollegeRequestDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/EditCollegeRequestDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/EditCollegeRequestDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/ConnectPlan/GetPlan": {
+"get": {
+"tags": [
+"ConnectPlan"
+],
+"parameters": [
+{
+"name": "id",
+"in": "query",
+"schema": {
+"type": "string"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/ConnectPlan/postPlan": {
+"post": {
+"tags": [
+"ConnectPlan"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/ConnectPlanRequestDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/ConnectPlanRequestDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/ConnectPlanRequestDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/ConnectPlanRequestDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/ConnectPlan/DeletePlan/{planId}": {
+"delete": {
+"tags": [
+"ConnectPlan"
+],
+"parameters": [
+{
+"name": "planId",
+"in": "path",
+"required": true,
+"schema": {
+"type": "string"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/ConnectPlan/updatePlan/{planId}": {
+"put": {
+"tags": [
+"ConnectPlan"
+],
+"parameters": [
+{
+"name": "planId",
+"in": "path",
+"required": true,
+"schema": {
+"type": "string"
+}
+}
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/ConnectPlanRequestDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/ConnectPlanRequestDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/ConnectPlanRequestDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/ConnectPlanRequestDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/ConnectPlan/GetPlanList": {
+"get": {
+"tags": [
+"ConnectPlan"
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/ConnectsPrice": {
+"get": {
+"tags": [
+"ConnectsPrice"
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/ConnetFeatures": {
+"get": {
+"tags": [
+"ConnetFeatures"
+],
+"responses": {
+"200": {
+"description": "Success",
+"content": {
+"text/plain": {
+"schema": {
+"type": "array",
+"items": {
+"type": "string"
+}
+}
+},
+"application/json": {
+"schema": {
+"type": "array",
+"items": {
+"type": "string"
+}
+}
+},
+"text/json": {
+"schema": {
+"type": "array",
+"items": {
+"type": "string"
+}
+}
+}
+}
+}
+}
+},
+"post": {
+"tags": [
+"ConnetFeatures"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/ConectFeaturesRequestDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/ConectFeaturesRequestDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/ConectFeaturesRequestDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/ConectFeaturesRequestDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/ConnetFeatures/{userId}": {
+"get": {
+"tags": [
+"ConnetFeatures"
+],
+"parameters": [
+{
+"name": "userId",
+"in": "path",
+"required": true,
+"schema": {
+"type": "string"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/ConnetFeatures/{id}": {
+"put": {
+"tags": [
+"ConnetFeatures"
+],
+"parameters": [
+{
+"name": "id",
+"in": "path",
+"required": true,
+"schema": {
+"type": "string"
+}
+}
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/ConectFeaturesRequestDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/ConectFeaturesRequestDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/ConectFeaturesRequestDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/ConectFeaturesRequestDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/ConnetFeatures/{jobId}": {
+"delete": {
+"tags": [
+"ConnetFeatures"
+],
+"parameters": [
+{
+"name": "jobId",
+"in": "path",
+"required": true,
+"schema": {
+"type": "string"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Country/CountryList": {
+"get": {
+"tags": [
+"Country"
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Country/Country/countryId": {
+"get": {
+"tags": [
+"Country"
+],
+"parameters": [
+{
+"name": "countryId",
+"in": "query",
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Country/DeleteCountry/countryId": {
+"delete": {
+"tags": [
+"Country"
+],
+"parameters": [
+{
+"name": "countryId",
+"in": "query",
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Country/AddCountry": {
+"post": {
+"tags": [
+"Country"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/CountryRequestDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/CountryRequestDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/CountryRequestDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/CountryRequestDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Country/EditCountry/countryId": {
+"put": {
+"tags": [
+"Country"
+],
+"requestBody": {
+"content": {
+"multipart/form-data": {
+"schema": {
+"type": "object",
+"properties": {
+"countryId": {
+"type": "string",
+"format": "uuid"
+},
+"countryName": {
+"type": "string"
+}
+}
+},
+"encoding": {
+"countryId": {
+"style": "form"
+},
+"countryName": {
+"style": "form"
+}
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Course": {
+"get": {
+"tags": [
+"Course"
+],
+"responses": {
+"200": {
+"description": "Success",
+"content": {
+"text/plain": {
+"schema": {
+"type": "array",
+"items": {
+"type": "string"
+}
+}
+},
+"application/json": {
+"schema": {
+"type": "array",
+"items": {
+"type": "string"
+}
+}
+},
+"text/json": {
+"schema": {
+"type": "array",
+"items": {
+"type": "string"
+}
+}
+}
+}
+}
+}
+},
+"post": {
+"tags": [
+"Course"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/CourseRequestDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/CourseRequestDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/CourseRequestDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/CourseRequestDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Course/{userId}": {
+"get": {
+"tags": [
+"Course"
+],
+"parameters": [
+{
+"name": "userId",
+"in": "path",
+"required": true,
+"schema": {
+"type": "string"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Course/{id}": {
+"put": {
+"tags": [
+"Course"
+],
+"parameters": [
+{
+"name": "id",
+"in": "path",
+"required": true,
+"schema": {
+"type": "string"
+}
+}
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/CourseRequestDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/CourseRequestDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/CourseRequestDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/CourseRequestDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+},
+"delete": {
+"tags": [
+"Course"
+],
+"parameters": [
+{
+"name": "id",
+"in": "path",
+"required": true,
+"schema": {
+"type": "string"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/CourseCategory": {
+"get": {
+"tags": [
+"CourseCategory"
+],
+"responses": {
+"200": {
+"description": "Success",
+"content": {
+"text/plain": {
+"schema": {
+"type": "array",
+"items": {
+"type": "string"
+}
+}
+},
+"application/json": {
+"schema": {
+"type": "array",
+"items": {
+"type": "string"
+}
+}
+},
+"text/json": {
+"schema": {
+"type": "array",
+"items": {
+"type": "string"
+}
+}
+}
+}
+}
+}
+},
+"post": {
+"tags": [
+"CourseCategory"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/CourseCategoryRequestDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/CourseCategoryRequestDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/CourseCategoryRequestDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/CourseCategoryRequestDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/CourseCategory/{userId}": {
+"get": {
+"tags": [
+"CourseCategory"
+],
+"parameters": [
+{
+"name": "userId",
+"in": "path",
+"required": true,
+"schema": {
+"type": "string"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/CourseCategory/{id}": {
+"put": {
+"tags": [
+"CourseCategory"
+],
+"parameters": [
+{
+"name": "id",
+"in": "path",
+"required": true,
+"schema": {
+"type": "string"
+}
+}
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/CourseCategoryRequestDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/CourseCategoryRequestDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/CourseCategoryRequestDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/CourseCategoryRequestDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+},
+"delete": {
+"tags": [
+"CourseCategory"
+],
+"parameters": [
+{
+"name": "id",
+"in": "path",
+"required": true,
+"schema": {
+"type": "string"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/CourseDtails": {
+"get": {
+"tags": [
+"CourseDtails"
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/CourseDtails/GetCourse/courseId": {
+"get": {
+"tags": [
+"CourseDtails"
+],
+"parameters": [
+{
+"name": "courseId",
+"in": "query",
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/CourseDtails/DeleteCourse/courseId": {
+"delete": {
+"tags": [
+"CourseDtails"
+],
+"parameters": [
+{
+"name": "courseId",
+"in": "query",
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/CourseDtails/AddCourse": {
+"post": {
+"tags": [
+"CourseDtails"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/CourseRequest"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/CourseRequest"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/CourseRequest"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/CourseRequest"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/CourseDtails/UpdateCourse/id": {
+"put": {
+"tags": [
+"CourseDtails"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/CourseUpdateRequest"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/CourseUpdateRequest"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/CourseUpdateRequest"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/CourseUpdateRequest"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Designations": {
+"get": {
+"tags": [
+"Designations"
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Dropdown/GetSkill": {
+"get": {
+"tags": [
+"Dropdown"
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Dropdown/GetSkill/skillId": {
+"get": {
+"tags": [
+"Dropdown"
+],
+"parameters": [
+{
+"name": "skillId",
+"in": "query",
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Dropdown/DeleteSkill/id": {
+"delete": {
+"tags": [
+"Dropdown"
+],
+"parameters": [
+{
+"name": "skillId",
+"in": "query",
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Dropdown/AddSkill": {
+"post": {
+"tags": [
+"Dropdown"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/KeySkillsRequest"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/KeySkillsRequest"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/KeySkillsRequest"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/KeySkillsRequest"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/EducationHistory": {
+"get": {
+"tags": [
+"EducationHistory"
+],
+"responses": {
+"200": {
+"description": "Success",
+"content": {
+"text/plain": {
+"schema": {
+"type": "array",
+"items": {
+"type": "string"
+}
+}
+},
+"application/json": {
+"schema": {
+"type": "array",
+"items": {
+"type": "string"
+}
+}
+},
+"text/json": {
+"schema": {
+"type": "array",
+"items": {
+"type": "string"
+}
+}
+}
+}
+}
+}
+},
+"post": {
+"tags": [
+"EducationHistory"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/EducationHistoryRequestDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/EducationHistoryRequestDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/EducationHistoryRequestDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/EducationHistoryRequestDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/EducationHistory/{userId}": {
+"get": {
+"tags": [
+"EducationHistory"
+],
+"parameters": [
+{
+"name": "userId",
+"in": "path",
+"required": true,
+"schema": {
+"type": "string"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/EducationHistory/{id}": {
+"put": {
+"tags": [
+"EducationHistory"
+],
+"parameters": [
+{
+"name": "id",
+"in": "path",
+"required": true,
+"schema": {
+"type": "string"
+}
+}
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/EducationHistoryRequestDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/EducationHistoryRequestDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/EducationHistoryRequestDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/EducationHistoryRequestDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+},
+"delete": {
+"tags": [
+"EducationHistory"
+],
+"parameters": [
+{
+"name": "id",
+"in": "path",
+"required": true,
+"schema": {
+"type": "string"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/EmploymentHistory/GetEmployementHis/userId": {
+"get": {
+"tags": [
+"EmploymentHistory"
+],
+"parameters": [
+{
+"name": "userId",
+"in": "query",
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/EmploymentHistory/GetEmployementHisById/Id": {
+"get": {
+"tags": [
+"EmploymentHistory"
+],
+"parameters": [
+{
+"name": "id",
+"in": "query",
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/EmploymentHistory/UpdateEmployementHis/id": {
+"put": {
+"tags": [
+"EmploymentHistory"
+],
+"parameters": [
+{
+"name": "id",
+"in": "query",
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/EmploymentHistoryRequestDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/EmploymentHistoryRequestDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/EmploymentHistoryRequestDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/EmploymentHistoryRequestDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/EmploymentHistory/DeleteEmployementHis/id": {
+"delete": {
+"tags": [
+"EmploymentHistory"
+],
+"parameters": [
+{
+"name": "id",
+"in": "query",
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/EmploymentHistory/EmploymentHistory": {
+"post": {
+"tags": [
+"EmploymentHistory"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/EmploymentHistoryRequestDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/EmploymentHistoryRequestDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/EmploymentHistoryRequestDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/EmploymentHistoryRequestDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/ExtraCertificates/GetExtraCertificateByUser/studentID": {
+"get": {
+"tags": [
+"ExtraCertificates"
+],
+"parameters": [
+{
+"name": "studentID",
+"in": "query",
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/ExtraCertificates/GetExtraCertificate/certId": {
+"get": {
+"tags": [
+"ExtraCertificates"
+],
+"parameters": [
+{
+"name": "certId",
+"in": "query",
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/ExtraCertificates/DeleteExtraCertificate/certId": {
+"delete": {
+"tags": [
+"ExtraCertificates"
+],
+"parameters": [
+{
+"name": "certId",
+"in": "query",
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/ExtraCertificates/AddExtracertificate": {
+"post": {
+"tags": [
+"ExtraCertificates"
+],
+"requestBody": {
+"content": {
+"multipart/form-data": {
+"schema": {
+"type": "object",
+"properties": {
+"studentId": {
+"type": "string",
+"format": "uuid"
+},
+"Title": {
+"type": "string"
+},
+"File": {
+"type": "string",
+"format": "binary"
+}
+}
+},
+"encoding": {
+"studentId": {
+"style": "form"
+},
+"Title": {
+"style": "form"
+},
+"File": {
+"style": "form"
+}
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/ExtraCertificates/EditExtracertificate/CertId": {
+"put": {
+"tags": [
+"ExtraCertificates"
+],
+"requestBody": {
+"content": {
+"multipart/form-data": {
+"schema": {
+"type": "object",
+"properties": {
+"CertId": {
+"type": "string",
+"format": "uuid"
+},
+"Title": {
+"type": "string"
+}
+}
+},
+"encoding": {
+"CertId": {
+"style": "form"
+},
+"Title": {
+"style": "form"
+}
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Gender": {
+"get": {
+"tags": [
+"Gender"
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Image/AddEditImage": {
+"post": {
+"tags": [
+"Image"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/ImageRequestDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/ImageRequestDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/ImageRequestDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/ImageRequestDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/IPN": {
+"put": {
+"tags": [
+"IPN"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/PaypalPaymentResponse"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/PaypalPaymentResponse"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/PaypalPaymentResponse"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/PaypalPaymentResponse"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Job/GetJobByEmail": {
+"get": {
+"tags": [
+"Job"
+],
+"parameters": [
+{
+"name": "email",
+"in": "query",
+"schema": {
+"type": "string"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Job": {
+"get": {
+"tags": [
+"Job"
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+},
+"post": {
+"tags": [
+"Job"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/JobRequestDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/JobRequestDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/JobRequestDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/JobRequestDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Job/GetJob/jobId": {
+"post": {
+"tags": [
+"Job"
+],
+"parameters": [
+{
+"name": "jobId",
+"in": "query",
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Job/GetJobByjobId/jobId": {
+"get": {
+"tags": [
+"Job"
+],
+"parameters": [
+{
+"name": "jobId",
+"in": "query",
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Job/DeleteJob/jobId": {
+"delete": {
+"tags": [
+"Job"
+],
+"parameters": [
+{
+"name": "jobId",
+"in": "query",
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Job/UpdateJob/id": {
+"put": {
+"tags": [
+"Job"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/JobUpdateRequest"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/JobUpdateRequest"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/JobUpdateRequest"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/JobUpdateRequest"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Job/GetFavrouteJobByStudent": {
+"post": {
+"tags": [
+"Job"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/FavrouteJobSearchRequest"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/FavrouteJobSearchRequest"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/FavrouteJobSearchRequest"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/FavrouteJobSearchRequest"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Job/RemoveJobFromFavroate/favroateJobId": {
+"delete": {
+"tags": [
+"Job"
+],
+"parameters": [
+{
+"name": "favroateJobId",
+"in": "query",
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Job/AddFavroateJob": {
+"post": {
+"tags": [
+"Job"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/FavroateJobRequest"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/FavroateJobRequest"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/FavroateJobRequest"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/FavroateJobRequest"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Job/GetAppliedJobsByJobId": {
+"post": {
+"tags": [
+"Job"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/AppliedJobRequest"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/AppliedJobRequest"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/AppliedJobRequest"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/AppliedJobRequest"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Job/GetAppliedJobsUserByUserId": {
+"post": {
+"tags": [
+"Job"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/AppliedJobRequest"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/AppliedJobRequest"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/AppliedJobRequest"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/AppliedJobRequest"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Job/GetAppliedJobsByUserId": {
+"post": {
+"tags": [
+"Job"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/AppliedJobSearchDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/AppliedJobSearchDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/AppliedJobSearchDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/AppliedJobSearchDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Job/CancelAppalyJob/{jobId}": {
+"delete": {
+"tags": [
+"Job"
+],
+"parameters": [
+{
+"name": "jobId",
+"in": "path",
+"required": true,
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Job/DeleteAppliedJobs/{jobId}": {
+"delete": {
+"tags": [
+"Job"
+],
+"parameters": [
+{
+"name": "jobId",
+"in": "path",
+"required": true,
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Job/appliedjobs": {
+"post": {
+"tags": [
+"Job"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/JobAppliedRequest"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/JobAppliedRequest"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/JobAppliedRequest"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/JobAppliedRequest"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Job/UpdateAppliedJobsById": {
+"put": {
+"tags": [
+"Job"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/AcceptRejectApplieJobRequestDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/AcceptRejectApplieJobRequestDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/AcceptRejectApplieJobRequestDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/AcceptRejectApplieJobRequestDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Job/SendInvitations": {
+"post": {
+"tags": [
+"Job"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/JobInvitationRequestDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/JobInvitationRequestDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/JobInvitationRequestDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/JobInvitationRequestDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Job/UpdateInvitationStatus": {
+"post": {
+"tags": [
+"Job"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/UpdateInvitationRequestDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/UpdateInvitationRequestDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/UpdateInvitationRequestDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/UpdateInvitationRequestDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Job/viewjobinvitationAccepted": {
+"get": {
+"tags": [
+"Job"
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Job/ViewJobInvitations/{userId}": {
+"get": {
+"tags": [
+"Job"
+],
+"parameters": [
+{
+"name": "userId",
+"in": "path",
+"required": true,
+"schema": {
+"type": "string"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Job/viewInvitationDetails/{InvitationId}": {
+"get": {
+"tags": [
+"Job"
+],
+"parameters": [
+{
+"name": "InvitationId",
+"in": "path",
+"required": true,
+"schema": {
+"type": "string"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Job/viewListOfJobInvitations": {
+"get": {
+"tags": [
+"Job"
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Job/GetJobByStudent": {
+"post": {
+"tags": [
+"Job"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/JobSearchRequest"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/JobSearchRequest"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/JobSearchRequest"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/JobSearchRequest"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Job/GetJobByEmployer": {
+"post": {
+"tags": [
+"Job"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/JobEmployerSearchRequest"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/JobEmployerSearchRequest"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/JobEmployerSearchRequest"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/JobEmployerSearchRequest"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Job/GetArchiveJobByEmployer": {
+"post": {
+"tags": [
+"Job"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/JobEmployerSearchRequest"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/JobEmployerSearchRequest"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/JobEmployerSearchRequest"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/JobEmployerSearchRequest"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Job/StudentListNotSendInvite": {
+"post": {
+"tags": [
+"Job"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/JobInvitationSendInviteDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/JobInvitationSendInviteDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/JobInvitationSendInviteDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/JobInvitationSendInviteDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Job/GetJobInvitationListByUser": {
+"post": {
+"tags": [
+"Job"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/JobInvitationSearchDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/JobInvitationSearchDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/JobInvitationSearchDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/JobInvitationSearchDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Job/GetJobInvitationAccepted": {
+"post": {
+"tags": [
+"Job"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/JobInvitationAcceptedSearchDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/JobInvitationAcceptedSearchDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/JobInvitationAcceptedSearchDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/JobInvitationAcceptedSearchDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/KycDocument": {
+"get": {
+"tags": [
+"KycDocument"
+],
+"responses": {
+"200": {
+"description": "Success",
+"content": {
+"text/plain": {
+"schema": {
+"type": "array",
+"items": {
+"type": "string"
+}
+}
+},
+"application/json": {
+"schema": {
+"type": "array",
+"items": {
+"type": "string"
+}
+}
+},
+"text/json": {
+"schema": {
+"type": "array",
+"items": {
+"type": "string"
+}
+}
+}
+}
+}
+}
+},
+"post": {
+"tags": [
+"KycDocument"
+],
+"requestBody": {
+"content": {
+"multipart/form-data": {
+"schema": {
+"required": [
+"DocPath",
+"KycDocumentFile",
+"UserId"
+],
+"type": "object",
+"properties": {
+"KycDocumentFile": {
+"type": "string",
+"format": "binary"
+},
+"DocPath": {
+"type": "string"
+},
+"Title": {
+"type": "string"
+},
+"Remarks": {
+"type": "string"
+},
+"UserId": {
+"type": "string"
+},
+"Id": {
+"type": "string",
+"format": "uuid"
+},
+"CreatedOn": {
+"type": "string",
+"format": "date-time"
+},
+"UpdatedOn": {
+"type": "string",
+"format": "date-time"
+},
+"IsDeleted": {
+"type": "boolean"
+},
+"CreatedBy": {
+"type": "string",
+"format": "uuid"
+},
+"UpdatedBy": {
+"type": "string",
+"format": "uuid"
+}
+}
+},
+"encoding": {
+"KycDocumentFile": {
+"style": "form"
+},
+"DocPath": {
+"style": "form"
+},
+"Title": {
+"style": "form"
+},
+"Remarks": {
+"style": "form"
+},
+"UserId": {
+"style": "form"
+},
+"Id": {
+"style": "form"
+},
+"CreatedOn": {
+"style": "form"
+},
+"UpdatedOn": {
+"style": "form"
+},
+"IsDeleted": {
+"style": "form"
+},
+"CreatedBy": {
+"style": "form"
+},
+"UpdatedBy": {
+"style": "form"
+}
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/KycDocument/{userId}": {
+"get": {
+"tags": [
+"KycDocument"
+],
+"parameters": [
+{
+"name": "userId",
+"in": "path",
+"required": true,
+"schema": {
+"type": "string"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/KycDocument/{id}": {
+"put": {
+"tags": [
+"KycDocument"
+],
+"parameters": [
+{
+"name": "id",
+"in": "path",
+"required": true,
+"schema": {
+"type": "string"
+}
+}
+],
+"requestBody": {
+"content": {
+"multipart/form-data": {
+"schema": {
+"required": [
+"DocPath",
+"KycDocumentFile",
+"UserId"
+],
+"type": "object",
+"properties": {
+"KycDocumentFile": {
+"type": "string",
+"format": "binary"
+},
+"DocPath": {
+"type": "string"
+},
+"Title": {
+"type": "string"
+},
+"Remarks": {
+"type": "string"
+},
+"UserId": {
+"type": "string"
+},
+"Id": {
+"type": "string",
+"format": "uuid"
+},
+"CreatedOn": {
+"type": "string",
+"format": "date-time"
+},
+"UpdatedOn": {
+"type": "string",
+"format": "date-time"
+},
+"IsDeleted": {
+"type": "boolean"
+},
+"CreatedBy": {
+"type": "string",
+"format": "uuid"
+},
+"UpdatedBy": {
+"type": "string",
+"format": "uuid"
+}
+}
+},
+"encoding": {
+"KycDocumentFile": {
+"style": "form"
+},
+"DocPath": {
+"style": "form"
+},
+"Title": {
+"style": "form"
+},
+"Remarks": {
+"style": "form"
+},
+"UserId": {
+"style": "form"
+},
+"Id": {
+"style": "form"
+},
+"CreatedOn": {
+"style": "form"
+},
+"UpdatedOn": {
+"style": "form"
+},
+"IsDeleted": {
+"style": "form"
+},
+"CreatedBy": {
+"style": "form"
+},
+"UpdatedBy": {
+"style": "form"
+}
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+},
+"delete": {
+"tags": [
+"KycDocument"
+],
+"parameters": [
+{
+"name": "id",
+"in": "path",
+"required": true,
+"schema": {
+"type": "string"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Notification/ViewAllNotification": {
+"post": {
+"tags": [
+"Notification"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/NotificationRequest"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/NotificationRequest"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/NotificationRequest"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/NotificationRequest"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Notification/IsViewAllNotification/loggedInUserId": {
+"put": {
+"tags": [
+"Notification"
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Notification/IsViewNotification/notificationId": {
+"put": {
+"tags": [
+"Notification"
+],
+"parameters": [
+{
+"name": "notificationId",
+"in": "query",
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Notification/IsActiveAllNotification/loggedInUserId": {
+"put": {
+"tags": [
+"Notification"
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Notification/IsActiveNotification/notificationId": {
+"put": {
+"tags": [
+"Notification"
+],
+"parameters": [
+{
+"name": "notificationId",
+"in": "query",
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Notification/AddNotification": {
+"post": {
+"tags": [
+"Notification"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/NotificationRequestDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/NotificationRequestDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/NotificationRequestDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/NotificationRequestDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/ProjectHistory/GetProjectHistory/userID": {
+"post": {
+"tags": [
+"ProjectHistory"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/ProjectHistoryListRequestDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/ProjectHistoryListRequestDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/ProjectHistoryListRequestDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/ProjectHistoryListRequestDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/ProjectHistory/GetProjectHistoryDetails/projectID": {
+"get": {
+"tags": [
+"ProjectHistory"
+],
+"parameters": [
+{
+"name": "projectID",
+"in": "query",
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/ProjectHistory/DeleteProjectHistory/projectID": {
+"delete": {
+"tags": [
+"ProjectHistory"
+],
+"parameters": [
+{
+"name": "projectID",
+"in": "query",
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/ProjectHistory/AddProjectHistory": {
+"post": {
+"tags": [
+"ProjectHistory"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/ProjectHistoryRequestDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/ProjectHistoryRequestDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/ProjectHistoryRequestDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/ProjectHistoryRequestDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/ProjectHistory/EditProject/projectID": {
+"put": {
+"tags": [
+"ProjectHistory"
+],
+"parameters": [
+{
+"name": "projectID",
+"in": "query",
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/ProjectHistoryRequestDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/ProjectHistoryRequestDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/ProjectHistoryRequestDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/ProjectHistoryRequestDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Qualification": {
+"get": {
+"tags": [
+"Qualification"
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+},
+"post": {
+"tags": [
+"Qualification"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/QualificationRequestDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/QualificationRequestDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/QualificationRequestDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/QualificationRequestDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+},
+"delete": {
+"tags": [
+"Qualification"
+],
+"parameters": [
+{
+"name": "qualificationId",
+"in": "query",
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+},
+"put": {
+"tags": [
+"Qualification"
+],
+"parameters": [
+{
+"name": "qualificationId",
+"in": "query",
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/QualificationRequestDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/QualificationRequestDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/QualificationRequestDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/QualificationRequestDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Qualification/{qualificationId}": {
+"get": {
+"tags": [
+"Qualification"
+],
+"parameters": [
+{
+"name": "qualificationId",
+"in": "path",
+"required": true,
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/ResumeHistory": {
+"get": {
+"tags": [
+"ResumeHistory"
+],
+"responses": {
+"200": {
+"description": "Success",
+"content": {
+"text/plain": {
+"schema": {
+"type": "array",
+"items": {
+"type": "string"
+}
+}
+},
+"application/json": {
+"schema": {
+"type": "array",
+"items": {
+"type": "string"
+}
+}
+},
+"text/json": {
+"schema": {
+"type": "array",
+"items": {
+"type": "string"
+}
+}
+}
+}
+}
+}
+},
+"post": {
+"tags": [
+"ResumeHistory"
+],
+"requestBody": {
+"content": {
+"multipart/form-data": {
+"schema": {
+"required": [
+"ResuleFile",
+"ResumeName",
+"ResumePath"
+],
+"type": "object",
+"properties": {
+"ResuleFile": {
+"type": "string",
+"format": "binary"
+},
+"ResumePath": {
+"type": "string"
+},
+"ResumeName": {
+"type": "string"
+},
+"ResumeType": {
+"type": "string"
+},
+"Id": {
+"type": "string",
+"format": "uuid"
+},
+"CreatedOn": {
+"type": "string",
+"format": "date-time"
+},
+"UpdatedOn": {
+"type": "string",
+"format": "date-time"
+},
+"IsDeleted": {
+"type": "boolean"
+},
+"CreatedBy": {
+"type": "string",
+"format": "uuid"
+},
+"UpdatedBy": {
+"type": "string",
+"format": "uuid"
+}
+}
+},
+"encoding": {
+"ResuleFile": {
+"style": "form"
+},
+"ResumePath": {
+"style": "form"
+},
+"ResumeName": {
+"style": "form"
+},
+"ResumeType": {
+"style": "form"
+},
+"Id": {
+"style": "form"
+},
+"CreatedOn": {
+"style": "form"
+},
+"UpdatedOn": {
+"style": "form"
+},
+"IsDeleted": {
+"style": "form"
+},
+"CreatedBy": {
+"style": "form"
+},
+"UpdatedBy": {
+"style": "form"
+}
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/ResumeHistory/{userId}": {
+"get": {
+"tags": [
+"ResumeHistory"
+],
+"parameters": [
+{
+"name": "userId",
+"in": "path",
+"required": true,
+"schema": {
+"type": "string"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/ResumeHistory/{id}": {
+"put": {
+"tags": [
+"ResumeHistory"
+],
+"parameters": [
+{
+"name": "id",
+"in": "path",
+"required": true,
+"schema": {
+"type": "string"
+}
+}
+],
+"requestBody": {
+"content": {
+"multipart/form-data": {
+"schema": {
+"required": [
+"ResuleFile",
+"ResumeName",
+"ResumePath"
+],
+"type": "object",
+"properties": {
+"ResuleFile": {
+"type": "string",
+"format": "binary"
+},
+"ResumePath": {
+"type": "string"
+},
+"ResumeName": {
+"type": "string"
+},
+"ResumeType": {
+"type": "string"
+},
+"Id": {
+"type": "string",
+"format": "uuid"
+},
+"CreatedOn": {
+"type": "string",
+"format": "date-time"
+},
+"UpdatedOn": {
+"type": "string",
+"format": "date-time"
+},
+"IsDeleted": {
+"type": "boolean"
+},
+"CreatedBy": {
+"type": "string",
+"format": "uuid"
+},
+"UpdatedBy": {
+"type": "string",
+"format": "uuid"
+}
+}
+},
+"encoding": {
+"ResuleFile": {
+"style": "form"
+},
+"ResumePath": {
+"style": "form"
+},
+"ResumeName": {
+"style": "form"
+},
+"ResumeType": {
+"style": "form"
+},
+"Id": {
+"style": "form"
+},
+"CreatedOn": {
+"style": "form"
+},
+"UpdatedOn": {
+"style": "form"
+},
+"IsDeleted": {
+"style": "form"
+},
+"CreatedBy": {
+"style": "form"
+},
+"UpdatedBy": {
+"style": "form"
+}
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/ResumeHistory/{resumeId}": {
+"delete": {
+"tags": [
+"ResumeHistory"
+],
+"parameters": [
+{
+"name": "resumeId",
+"in": "path",
+"required": true,
+"schema": {
+"type": "string"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Role/{id}": {
+"get": {
+"tags": [
+"Role"
+],
+"parameters": [
+{
+"name": "id",
+"in": "path",
+"required": true,
+"schema": {
+"type": "integer",
+"format": "int32"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success",
+"content": {
+"text/plain": {
+"schema": {
+"type": "string"
+}
+},
+"application/json": {
+"schema": {
+"type": "string"
+}
+},
+"text/json": {
+"schema": {
+"type": "string"
+}
+}
+}
+}
+}
+},
+"put": {
+"tags": [
+"Role"
+],
+"parameters": [
+{
+"name": "id",
+"in": "path",
+"required": true,
+"schema": {
+"type": "string"
+}
+}
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/RoleRequestDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/RoleRequestDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/RoleRequestDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/RoleRequestDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Role/DeleteRole": {
+"delete": {
+"tags": [
+"Role"
+],
+"parameters": [
+{
+"name": "Id",
+"in": "query",
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Role": {
+"get": {
+"tags": [
+"Role"
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+},
+"post": {
+"tags": [
+"Role"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/RoleRequestDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/RoleRequestDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/RoleRequestDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/RoleRequestDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Skill": {
+"get": {
+"tags": [
+"Skill"
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+},
+"post": {
+"tags": [
+"Skill"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/SkillRequestDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/SkillRequestDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/SkillRequestDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/SkillRequestDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+},
+"delete": {
+"tags": [
+"Skill"
+],
+"parameters": [
+{
+"name": "skillId",
+"in": "query",
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+},
+"put": {
+"tags": [
+"Skill"
+],
+"parameters": [
+{
+"name": "skillId",
+"in": "query",
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/SkillRequestDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/SkillRequestDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/SkillRequestDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/SkillRequestDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Skill/{skillId}": {
+"get": {
+"tags": [
+"Skill"
+],
+"parameters": [
+{
+"name": "skillId",
+"in": "path",
+"required": true,
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/State/StateList": {
+"get": {
+"tags": [
+"State"
+],
+"parameters": [
+{
+"name": "CountryId",
+"in": "query",
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/State/GetState/stateId": {
+"get": {
+"tags": [
+"State"
+],
+"parameters": [
+{
+"name": "stateId",
+"in": "query",
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/State/DeleteState/stateId": {
+"delete": {
+"tags": [
+"State"
+],
+"parameters": [
+{
+"name": "stateId",
+"in": "query",
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/State/AddState": {
+"post": {
+"tags": [
+"State"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/StateRequestDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/StateRequestDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/StateRequestDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/StateRequestDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/State/EditState/stateId": {
+"put": {
+"tags": [
+"State"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/EditStateRequest"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/EditStateRequest"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/EditStateRequest"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/EditStateRequest"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/StudentKyc/{studentID}": {
+"get": {
+"tags": [
+"StudentKyc"
+],
+"parameters": [
+{
+"name": "studentID",
+"in": "path",
+"required": true,
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/StudentKyc/{kycID}": {
+"delete": {
+"tags": [
+"StudentKyc"
+],
+"parameters": [
+{
+"name": "kycID",
+"in": "path",
+"required": true,
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/StudentKyc/AddKycDocument": {
+"post": {
+"tags": [
+"StudentKyc"
+],
+"requestBody": {
+"content": {
+"multipart/form-data": {
+"schema": {
+"required": [
+"DocumentTitle",
+"MainFile"
+],
+"type": "object",
+"properties": {
+"DocumentTitle": {
+"type": "string"
+},
+"MainFile": {
+"type": "string",
+"format": "binary"
+},
+"BackSideFile": {
+"type": "string",
+"format": "binary"
+},
+"OfferLetter": {
+"type": "string",
+"format": "binary"
+},
+"Remarks": {
+"type": "string"
+},
+"StudentId": {
+"type": "string",
+"format": "uuid"
+}
+}
+},
+"encoding": {
+"DocumentTitle": {
+"style": "form"
+},
+"MainFile": {
+"style": "form"
+},
+"BackSideFile": {
+"style": "form"
+},
+"OfferLetter": {
+"style": "form"
+},
+"Remarks": {
+"style": "form"
+},
+"StudentId": {
+"style": "form"
+}
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/StudentKyc/EditKycDocument/StudentId": {
+"put": {
+"tags": [
+"StudentKyc"
+],
+"requestBody": {
+"content": {
+"multipart/form-data": {
+"schema": {
+"required": [
+"DocumentId",
+"StudentId"
+],
+"type": "object",
+"properties": {
+"DocumentId": {
+"type": "string",
+"format": "uuid"
+},
+"DocumentTitle": {
+"type": "string"
+},
+"MainFile": {
+"type": "string",
+"format": "binary"
+},
+"BackSideFile": {
+"type": "string",
+"format": "binary"
+},
+"OfferLetter": {
+"type": "string",
+"format": "binary"
+},
+"Remarks": {
+"type": "string"
+},
+"StudentId": {
+"type": "string",
+"format": "uuid"
+}
+}
+},
+"encoding": {
+"DocumentId": {
+"style": "form"
+},
+"DocumentTitle": {
+"style": "form"
+},
+"MainFile": {
+"style": "form"
+},
+"BackSideFile": {
+"style": "form"
+},
+"OfferLetter": {
+"style": "form"
+},
+"Remarks": {
+"style": "form"
+},
+"StudentId": {
+"style": "form"
+}
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Tag": {
+"get": {
+"tags": [
+"Tag"
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+},
+"post": {
+"tags": [
+"Tag"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/TagRequestDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/TagRequestDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/TagRequestDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/TagRequestDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+},
+"put": {
+"tags": [
+"Tag"
+],
+"parameters": [
+{
+"name": "tagId",
+"in": "query",
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/TagRequestDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/TagRequestDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/TagRequestDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/TagRequestDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+},
+"delete": {
+"tags": [
+"Tag"
+],
+"parameters": [
+{
+"name": "tagId",
+"in": "query",
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/Tag/{tagId}": {
+"get": {
+"tags": [
+"Tag"
+],
+"parameters": [
+{
+"name": "tagId",
+"in": "path",
+"required": true,
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/User": {
+"get": {
+"tags": [
+"User"
+],
+"responses": {
+"200": {
+"description": "Success",
+"content": {
+"text/plain": {
+"schema": {
+"type": "array",
+"items": {
+"type": "string"
+}
+}
+},
+"application/json": {
+"schema": {
+"type": "array",
+"items": {
+"type": "string"
+}
+}
+},
+"text/json": {
+"schema": {
+"type": "array",
+"items": {
+"type": "string"
+}
+}
+}
+}
+}
+}
+},
+"delete": {
+"tags": [
+"User"
+],
+"parameters": [
+{
+"name": "userId",
+"in": "query",
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/User/GetUsers": {
+"post": {
+"tags": [
+"User"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/UserDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/UserDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/UserDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/UserDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/User/GetUsersList": {
+"post": {
+"tags": [
+"User"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/UserRequestDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/UserRequestDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/UserRequestDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/UserRequestDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/User/GetUsers/Id": {
+"post": {
+"tags": [
+"User"
+],
+"parameters": [
+{
+"name": "userId",
+"in": "query",
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/User/AddNewUser": {
+"post": {
+"tags": [
+"User"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/SignUpRequestDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/SignUpRequestDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/SignUpRequestDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/SignUpRequestDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/User/EditUser/userId": {
+"put": {
+"tags": [
+"User"
+],
+"parameters": [
+{
+"name": "userId",
+"in": "query",
+"schema": {
+"type": "string",
+"format": "uuid"
+}
+}
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/UserUpdateRequestDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/UserUpdateRequestDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/UserUpdateRequestDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/UserUpdateRequestDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/User/BlockUser": {
+"post": {
+"tags": [
+"User"
+],
+"parameters": [
+{
+"name": "userId",
+"in": "query",
+"schema": {
+"type": "string"
+}
+},
+{
+"name": "remarks",
+"in": "query",
+"schema": {
+"type": "string"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/User/UnBlockUser": {
+"post": {
+"tags": [
+"User"
+],
+"parameters": [
+{
+"name": "userId",
+"in": "query",
+"schema": {
+"type": "string"
+}
+},
+{
+"name": "remarks",
+"in": "query",
+"schema": {
+"type": "string"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/User/jobSearch": {
+"post": {
+"tags": [
+"User"
+],
+"requestBody": {
+"content": {
+"application/json-patch+json": {
+"schema": {
+"$ref": "#/components/schemas/SearchJobRequestDto"
+}
+},
+"application/json": {
+"schema": {
+"$ref": "#/components/schemas/SearchJobRequestDto"
+}
+},
+"text/json": {
+"schema": {
+"$ref": "#/components/schemas/SearchJobRequestDto"
+}
+},
+"application/*+json": {
+"schema": {
+"$ref": "#/components/schemas/SearchJobRequestDto"
+}
+}
+}
+},
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/api/User/{Id}": {
+"get": {
+"tags": [
+"User"
+],
+"parameters": [
+{
+"name": "Id",
+"in": "path",
+"required": true,
+"schema": {
+"type": "string"
+}
+}
+],
+"responses": {
+"200": {
+"description": "Success"
+}
+}
+}
+},
+"/WeatherForecast": {
+"get": {
+"tags": [
+"WeatherForecast"
+],
+"responses": {
+"200": {
+"description": "Success",
+"content": {
+"text/plain": {
+"schema": {
+"type": "array",
+"items": {
+"$ref": "#/components/schemas/WeatherForecast"
+}
+}
+},
+"application/json": {
+"schema": {
+"type": "array",
+"items": {
+"$ref": "#/components/schemas/WeatherForecast"
+}
+}
+},
+"text/json": {
+"schema": {
+"type": "array",
+"items": {
+"$ref": "#/components/schemas/WeatherForecast"
+}
+}
+}
+}
+}
+}
+}
+}
+},
+"components": {
+"schemas": {
+"AcceptRejectApplieJobRequestDto": {
+"required": [
+"applayJobId"
+],
+"type": "object",
+"properties": {
+"applayJobId": {
+"type": "string",
+"format": "uuid"
+},
+"appiledJobStatusByEmployer": {
+"$ref": "#/components/schemas/AppiledJobStatusByEmployer"
+}
+},
+"additionalProperties": false
+},
+"AppiledJobStatusByEmployer": {
+"enum": [
+0,
+1,
+2
+],
+"type": "integer",
+"format": "int32"
+},
+"AppliedJobRequest": {
+"type": "object",
+"properties": {
+"jobId": {
+"type": "string",
+"format": "uuid"
+},
+"userId": {
+"type": "string",
+"format": "uuid"
+},
+"pageNumber": {
+"type": "integer",
+"format": "int32"
+},
+"pageSize": {
+"type": "integer",
+"format": "int32"
+}
+},
+"additionalProperties": false
+},
+"AppliedJobSearchDto": {
+"required": [
+"userId"
+],
+"type": "object",
+"properties": {
+"userId": {
+"type": "string",
+"format": "uuid"
+},
+"serachItem": {
+"type": "string",
+"nullable": true
+},
+"pageNumber": {
+"type": "integer",
+"format": "int32"
+},
+"pageSize": {
+"type": "integer",
+"format": "int32"
+}
+},
+"additionalProperties": false
+},
+"BuyConnectRequestDto": {
+"type": "object",
+"properties": {
+"userId": {
+"type": "string",
+"format": "uuid"
+},
+"subscription_Name": {
+"type": "string",
+"nullable": true
+},
+"buyConnects": {
+"type": "string",
+"nullable": true
+},
+"transaction_Id": {
+"type": "string",
+"nullable": true
+},
+"intent": {
+"type": "string",
+"nullable": true
+},
+"payer_Email_Address": {
+"type": "string",
+"nullable": true
+},
+"payer_Name": {
+"type": "string",
+"nullable": true
+},
+"payer_Id": {
+"type": "string",
+"nullable": true
+},
+"currency_Code": {
+"type": "string",
+"nullable": true
+},
+"amount": {
+"type": "string",
+"nullable": true
+},
+"transaction_Time": {
+"type": "string",
+"nullable": true
+},
+"payer_Phoneno": {
+"type": "string",
+"nullable": true
+},
+"status": {
+"type": "string",
+"nullable": true
+}
+},
+"additionalProperties": false
+},
+"CityRequestDto": {
+"type": "object",
+"properties": {
+"name": {
+"type": "string",
+"nullable": true
+},
+"stateId": {
+"type": "string",
+"format": "uuid"
+}
+},
+"additionalProperties": false
+},
+"CollegeRequestDto": {
+"type": "object",
+"properties": {
+"userId": {
+"type": "string",
+"format": "uuid"
+},
+"name": {
+"type": "string",
+"nullable": true
+},
+"webSiteURL": {
+"type": "string",
+"nullable": true
+},
+"zipCode": {
+"type": "string",
+"nullable": true
+},
+"address": {
+"type": "string",
+"nullable": true
+}
+},
+"additionalProperties": false
+},
+"ConectFeaturesRequestDto": {
+"type": "object",
+"properties": {
+"id": {
+"type": "string",
+"format": "uuid"
+},
+"createdOn": {
+"type": "string",
+"format": "date-time",
+"nullable": true
+},
+"updatedOn": {
+"type": "string",
+"format": "date-time",
+"nullable": true
+},
+"isDeleted": {
+"type": "boolean"
+},
+"createdBy": {
+"type": "string",
+"format": "uuid"
+},
+"updatedBy": {
+"type": "string",
+"format": "uuid"
+},
+"title": {
+"type": "string",
+"nullable": true
+},
+"description": {
+"type": "string",
+"nullable": true
+}
+},
+"additionalProperties": false
+},
+"ConnectPlanRequestDto": {
+"required": [
+"name"
+],
+"type": "object",
+"properties": {
+"id": {
+"type": "string",
+"format": "uuid"
+},
+"createdOn": {
+"type": "string",
+"format": "date-time",
+"nullable": true
+},
+"updatedOn": {
+"type": "string",
+"format": "date-time",
+"nullable": true
+},
+"isDeleted": {
+"type": "boolean"
+},
+"createdBy": {
+"type": "string",
+"format": "uuid"
+},
+"updatedBy": {
+"type": "string",
+"format": "uuid"
+},
+"name": {
+"type": "string"
+}
+},
+"additionalProperties": false
+},
+"CountryRequestDto": {
+"type": "object",
+"properties": {
+"name": {
+"type": "string",
+"nullable": true
+}
+},
+"additionalProperties": false
+},
+"CourseCategoryRequestDto": {
+"required": [
+"courseId",
+"name"
+],
+"type": "object",
+"properties": {
+"id": {
+"type": "string",
+"format": "uuid"
+},
+"createdOn": {
+"type": "string",
+"format": "date-time",
+"nullable": true
+},
+"updatedOn": {
+"type": "string",
+"format": "date-time",
+"nullable": true
+},
+"isDeleted": {
+"type": "boolean"
+},
+"createdBy": {
+"type": "string",
+"format": "uuid"
+},
+"updatedBy": {
+"type": "string",
+"format": "uuid"
+},
+"name": {
+"type": "string"
+},
+"description": {
+"type": "string",
+"nullable": true
+},
+"courseId": {
+"type": "string",
+"format": "uuid"
+}
+},
+"additionalProperties": false
+},
+"CourseRequest": {
+"required": [
+"duration",
+"durationType",
+"name"
+],
+"type": "object",
+"properties": {
+"name": {
+"type": "string"
+},
+"duration": {
+"type": "string"
+},
+"durationType": {
+"type": "string"
+}
+},
+"additionalProperties": false
+},
+"CourseRequestDto": {
+"required": [
+"duration",
+"name"
+],
+"type": "object",
+"properties": {
+"id": {
+"type": "string",
+"format": "uuid"
+},
+"createdOn": {
+"type": "string",
+"format": "date-time",
+"nullable": true
+},
+"updatedOn": {
+"type": "string",
+"format": "date-time",
+"nullable": true
+},
+"isDeleted": {
+"type": "boolean"
+},
+"createdBy": {
+"type": "string",
+"format": "uuid"
+},
+"updatedBy": {
+"type": "string",
+"format": "uuid"
+},
+"name": {
+"type": "string"
+},
+"duration": {
+"type": "string"
+},
+"durationType": {
+"type": "string",
+"nullable": true
+}
+},
+"additionalProperties": false
+},
+"CourseStatus": {
+"enum": [
+1,
+2
+],
+"type": "integer",
+"format": "int32"
+},
+"CourseUpdateRequest": {
+"type": "object",
+"properties": {
+"courseId": {
+"type": "string",
+"format": "uuid"
+},
+"name": {
+"type": "string",
+"nullable": true
+},
+"duration": {
+"type": "string",
+"nullable": true
+},
+"durationType": {
+"type": "string",
+"nullable": true
+}
+},
+"additionalProperties": false
+},
+"EditCityRequestDto": {
+"type": "object",
+"properties": {
+"cityId": {
+"type": "string",
+"format": "uuid"
+},
+"cityName": {
+"type": "string",
+"nullable": true
+}
+},
+"additionalProperties": false
+},
+"EditCollegeRequestDto": {
+"type": "object",
+"properties": {
+"collegeId": {
+"type": "string",
+"format": "uuid"
+},
+"userId": {
+"type": "string",
+"format": "uuid"
+},
+"name": {
+"type": "string",
+"nullable": true
+},
+"webSiteURL": {
+"type": "string",
+"nullable": true
+},
+"zipCode": {
+"type": "string",
+"nullable": true
+},
+"address": {
+"type": "string",
+"nullable": true
+}
+},
+"additionalProperties": false
+},
+"EditStateRequest": {
+"type": "object",
+"properties": {
+"stateId": {
+"type": "string",
+"format": "uuid"
+},
+"stateName": {
+"type": "string",
+"nullable": true
+}
+},
+"additionalProperties": false
+},
+"EducationHistoryRequestDto": {
+"required": [
+"caurseCategoryId",
+"collegeId",
+"passingYear",
+"qualificationId",
+"userId"
+],
+"type": "object",
+"properties": {
+"createdOn": {
+"type": "string",
+"format": "date-time",
+"nullable": true
+},
+"updatedOn": {
+"type": "string",
+"format": "date-time",
+"nullable": true
+},
+"isDeleted": {
+"type": "boolean"
+},
+"createdBy": {
+"type": "string",
+"format": "uuid"
+},
+"updatedBy": {
+"type": "string",
+"format": "uuid"
+},
+"id": {
+"type": "string",
+"format": "uuid"
+},
+"passingYear": {
+"type": "string"
+},
+"userId": {
+"type": "string",
+"format": "uuid"
+},
+"collegeId": {
+"type": "string",
+"format": "uuid"
+},
+"caurseCategoryId": {
+"type": "string",
+"format": "uuid"
+},
+"qualificationId": {
+"type": "string",
+"format": "uuid"
+}
+},
+"additionalProperties": false
+},
+"EmploymentHistoryRequestDto": {
+"required": [
+"employerName",
+"userId"
+],
+"type": "object",
+"properties": {
+"userId": {
+"type": "string",
+"format": "uuid"
+},
+"employerName": {
+"type": "string"
+},
+"designationId": {
+"type": "string",
+"format": "uuid",
+"nullable": true
+},
+"isCurrentEmployer": {
+"type": "boolean"
+},
+"startDate": {
+"type": "string",
+"nullable": true
+},
+"endDate": {
+"type": "string",
+"nullable": true
+},
+"salary": {
+"type": "number",
+"format": "double"
+}
+},
+"additionalProperties": false
+},
+"FavroateJobRequest": {
+"type": "object",
+"properties": {
+"jobId": {
+"type": "string",
+"format": "uuid"
+},
+"userId": {
+"type": "string",
+"format": "uuid"
+}
+},
+"additionalProperties": false
+},
+"FavrouteJobSearchRequest": {
+"type": "object",
+"properties": {
+"serachItem": {
+"type": "string",
+"nullable": true
+},
+"studentId": {
+"type": "string",
+"format": "uuid"
+},
+"pageNumber": {
+"type": "integer",
+"format": "int32"
+},
+"pageSize": {
+"type": "integer",
+"format": "int32"
+}
+},
+"additionalProperties": false
+},
+"ForgotPasswordRequestDto": {
+"required": [
+"email"
+],
+"type": "object",
+"properties": {
+"email": {
+"type": "string"
+}
+},
+"additionalProperties": false
+},
+"ImageRequestDto": {
+"type": "object",
+"properties": {
+"userId": {
+"type": "string",
+"format": "uuid"
+},
+"image": {
+"type": "string",
+"nullable": true
+}
+},
+"additionalProperties": false
+},
+"InvitationStatus": {
+"enum": [
+0,
+1,
+2
+],
+"type": "integer",
+"format": "int32"
+},
+"JobAppliedRequest": {
+"required": [
+"jobId",
+"userId"
+],
+"type": "object",
+"properties": {
+"jobId": {
+"type": "string",
+"format": "uuid"
+},
+"userId": {
+"type": "string",
+"format": "uuid"
+},
+"remarks": {
+"type": "string",
+"nullable": true
+}
+},
+"additionalProperties": false
+},
+"JobEmployerSearchRequest": {
+"type": "object",
+"properties": {
+"serachItem": {
+"type": "string",
+"nullable": true
+},
+"userId": {
+"type": "string",
+"format": "uuid"
+},
+"pageNumber": {
+"type": "integer",
+"format": "int32"
+},
+"pageSize": {
+"type": "integer",
+"format": "int32"
+}
+},
+"additionalProperties": false
+},
+"JobInvitationAcceptedSearchDto": {
+"type": "object",
+"properties": {
+"jobId": {
+"type": "string",
+"format": "uuid"
+},
+"pageNumber": {
+"type": "integer",
+"format": "int32"
+},
+"pageSize": {
+"type": "integer",
+"format": "int32"
+}
+},
+"additionalProperties": false
+},
+"JobInvitationRequestDto": {
+"required": [
+"jobId"
+],
+"type": "object",
+"properties": {
+"jobId": {
+"type": "string",
+"format": "uuid"
+},
+"userId": {
+"type": "string",
+"format": "uuid"
+}
+},
+"additionalProperties": false
+},
+"JobInvitationSearchDto": {
+"type": "object",
+"properties": {
+"serachItem": {
+"type": "string",
+"nullable": true
+},
+"userId": {
+"type": "string",
+"format": "uuid"
+},
+"pageNumber": {
+"type": "integer",
+"format": "int32"
+},
+"pageSize": {
+"type": "integer",
+"format": "int32"
+}
+},
+"additionalProperties": false
+},
+"JobInvitationSendInviteDto": {
+"required": [
+"jobId"
+],
+"type": "object",
+"properties": {
+"jobId": {
+"type": "string",
+"format": "uuid"
+},
+"pageNumber": {
+"type": "integer",
+"format": "int32"
+},
+"pageSize": {
+"type": "integer",
+"format": "int32"
+}
+},
+"additionalProperties": false
+},
+"JobRequestDto": {
+"required": [
+"daysPerWeek",
+"description",
+"designation",
+"experienceInMonth",
+"experienceInYears",
+"hoursPerDay",
+"salary",
+"title",
+"workingTypes"
+],
+"type": "object",
+"properties": {
+"userId": {
+"type": "string",
+"format": "uuid"
+},
+"title": {
+"type": "string"
+},
+"description": {
+"type": "string"
+},
+"designation": {
+"type": "string"
+},
+"experienceInYears": {
+"type": "integer",
+"format": "int32"
+},
+"experienceInMonth": {
+"type": "integer",
+"format": "int32"
+},
+"hoursPerDay": {
+"type": "integer",
+"format": "int32"
+},
+"daysPerWeek": {
+"type": "integer",
+"format": "int32"
+},
+"workingTypes": {
+"$ref": "#/components/schemas/WorkingTypes"
+},
+"salary": {
+"type": "number",
+"format": "double"
+},
+"timezone": {
+"type": "string",
+"nullable": true
+},
+"location": {
+"type": "string",
+"nullable": true
+},
+"timing": {
+"type": "string",
+"nullable": true
+},
+"skills": {
+"type": "array",
+"items": {
+"type": "string"
+},
+"nullable": true
+},
+"tags": {
+"type": "array",
+"items": {
+"type": "string"
+},
+"nullable": true
+},
+"qualification": {
+"type": "array",
+"items": {
+"type": "string",
+"format": "uuid"
+},
+"nullable": true
+},
+"isPrivate": {
+"type": "boolean"
+}
+},
+"additionalProperties": false
+},
+"JobSearchRequest": {
+"type": "object",
+"properties": {
+"userId": {
+"type": "string",
+"format": "uuid"
+},
+"serachItem": {
+"type": "string",
+"nullable": true
+},
+"pageNumber": {
+"type": "integer",
+"format": "int32"
+},
+"pageSize": {
+"type": "integer",
+"format": "int32"
+}
+},
+"additionalProperties": false
+},
+"JobUpdateRequest": {
+"required": [
+"employerId",
+"jobId",
+"qualification",
+"salary",
+"skills",
+"tags"
+],
+"type": "object",
+"properties": {
+"jobId": {
+"type": "string",
+"format": "uuid"
+},
+"title": {
+"type": "string",
+"nullable": true
+},
+"description": {
+"type": "string",
+"nullable": true
+},
+"employerId": {
+"type": "string",
+"format": "uuid"
+},
+"salary": {
+"type": "number",
+"format": "double"
+},
+"jobLocation": {
+"type": "string",
+"nullable": true
+},
+"officeTimings": {
+"type": "string",
+"nullable": true
+},
+"qualification": {
+"type": "array",
+"items": {
+"type": "string"
+}
+},
+"skills": {
+"type": "array",
+"items": {
+"type": "string"
+}
+},
+"tags": {
+"type": "array",
+"items": {
+"type": "string"
+}
+},
+"isPrivate": {
+"type": "boolean"
+}
+},
+"additionalProperties": false
+},
+"KeySkillsRequest": {
+"type": "object",
+"properties": {
+"title": {
+"type": "string",
+"nullable": true
+}
+},
+"additionalProperties": false
+},
+"KycStatus": {
+"enum": [
+0,
+1,
+2
+],
+"type": "integer",
+"format": "int32"
+},
+"LoginRequestDto": {
+"required": [
+"password",
+"userName"
+],
+"type": "object",
+"properties": {
+"userName": {
+"type": "string"
+},
+"password": {
+"type": "string"
+}
+},
+"additionalProperties": false
+},
+"NotificationRequest": {
+"type": "object",
+"properties": {
+"loggedInUserId": {
+"type": "string",
+"format": "uuid",
+"nullable": true
+},
+"pageNumber": {
+"type": "integer",
+"format": "int32"
+},
+"pageSize": {
+"type": "integer",
+"format": "int32"
+}
+},
+"additionalProperties": false
+},
+"NotificationRequestDto": {
+"type": "object",
+"properties": {
+"senderId": {
+"type": "string",
+"format": "uuid"
+},
+"message": {
+"type": "string",
+"nullable": true
+},
+"reciverId": {
+"type": "string",
+"format": "uuid"
+},
+"notificationTypes": {
+"$ref": "#/components/schemas/NotificationTypes"
+}
+},
+"additionalProperties": false
+},
+"NotificationTypes": {
+"enum": [
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10
+],
+"type": "integer",
+"format": "int32"
+},
+"OperationType": {
+"enum": [
+1,
+2
+],
+"type": "integer",
+"format": "int32"
+},
+"PaypalPaymentResponse": {
+"type": "object",
+"properties": {
+"payer_status": {
+"type": "string",
+"nullable": true
+},
+"payer_id": {
+"type": "string",
+"format": "uuid"
+},
+"quantity": {
+"type": "integer",
+"format": "int32"
+},
+"txn_id": {
+"type": "string",
+"nullable": true
+},
+"receipt_ID": {
+"type": "string",
+"format": "uuid"
+}
+},
+"additionalProperties": false
+},
+"ProjectHistoryListRequestDto": {
+"type": "object",
+"properties": {
+"userId": {
+"type": "string",
+"format": "uuid"
+},
+"pageNumber": {
+"type": "integer",
+"format": "int32"
+},
+"pageSize": {
+"type": "integer",
+"format": "int32"
+}
+},
+"additionalProperties": false
+},
+"ProjectHistoryRequestDto": {
+"type": "object",
+"properties": {
+"userId": {
+"type": "string",
+"format": "uuid"
+},
+"title": {
+"type": "string",
+"nullable": true
+},
+"description": {
+"type": "string",
+"nullable": true
+},
+"roleResponsiblity": {
+"type": "string",
+"nullable": true
+},
+"projectUrl": {
+"type": "string",
+"nullable": true
+},
+"startDate": {
+"type": "string",
+"nullable": true
+},
+"endDate": {
+"type": "string",
+"nullable": true
+},
+"totalTeamSize": {
+"type": "integer",
+"format": "int32"
+},
+"companyEmail": {
+"type": "string",
+"nullable": true
+}
+},
+"additionalProperties": false
+},
+"QualificationRequestDto": {
+"type": "object",
+"properties": {
+"name": {
+"type": "string",
+"nullable": true
+}
+},
+"additionalProperties": false
+},
+"ResetPasswordRequestDto": {
+"required": [
+"password"
+],
+"type": "object",
+"properties": {
+"password": {
+"type": "string",
+"format": "password"
+},
+"confirmPassword": {
+"type": "string",
+"format": "password",
+"nullable": true
+},
+"token": {
+"type": "string",
+"nullable": true
+},
+"email": {
+"type": "string",
+"nullable": true
+}
+},
+"additionalProperties": false
+},
+"RoleRequestDto": {
+"required": [
+"name"
+],
+"type": "object",
+"properties": {
+"id": {
+"type": "string",
+"format": "uuid"
+},
+"name": {
+"type": "string"
+},
+"description": {
+"type": "string",
+"nullable": true
+}
+},
+"additionalProperties": false
+},
+"SearchJobRequestDto": {
+"required": [
+"courseCategoryId",
+"courseId",
+"experienceLevel",
+"jobType",
+"keySillsId"
+],
+"type": "object",
+"properties": {
+"id": {
+"type": "string",
+"format": "uuid"
+},
+"createdOn": {
+"type": "string",
+"format": "date-time",
+"nullable": true
+},
+"updatedOn": {
+"type": "string",
+"format": "date-time",
+"nullable": true
+},
+"isDeleted": {
+"type": "boolean"
+},
+"createdBy": {
+"type": "string",
+"format": "uuid"
+},
+"updatedBy": {
+"type": "string",
+"format": "uuid"
+},
+"keySillsId": {
+"type": "string"
+},
+"courseCategoryId": {
+"type": "string"
+},
+"courseId": {
+"type": "string"
+},
+"locations": {
+"type": "string",
+"nullable": true
+},
+"jobType": {
+"type": "string"
+},
+"experienceLevel": {
+"type": "string"
+},
+"postedDate": {
+"type": "string",
+"format": "date-time"
+},
+"pageNumber": {
+"type": "integer",
+"format": "int32"
+},
+"pageSize": {
+"type": "integer",
+"format": "int32"
+}
+},
+"additionalProperties": false
+},
+"SignUpRequestDto": {
+"required": [
+"confirmPassword",
+"email",
+"firstName",
+"lastName",
+"password",
+"userRoleType"
+],
+"type": "object",
+"properties": {
+"firstName": {
+"type": "string"
+},
+"lastName": {
+"type": "string"
+},
+"email": {
+"pattern": "^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$",
+"type": "string"
+},
+"password": {
+"maxLength": 100,
+"minLength": 8,
+"pattern": "^((?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])|(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[^a-zA-Z0-9])|(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[^a-zA-Z0-9])|(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^a-zA-Z0-9])).{8,}$",
+"type": "string",
+"format": "password"
+},
+"confirmPassword": {
+"maxLength": 100,
+"minLength": 8,
+"type": "string",
+"format": "password"
+},
+"userRoleType": {
+"$ref": "#/components/schemas/UserRoleType"
+}
+},
+"additionalProperties": false
+},
+"SkillRequestDto": {
+"type": "object",
+"properties": {
+"name": {
+"type": "string",
+"nullable": true
+}
+},
+"additionalProperties": false
+},
+"StateRequestDto": {
+"type": "object",
+"properties": {
+"name": {
+"type": "string",
+"nullable": true
+},
+"countryId": {
+"type": "string",
+"format": "uuid"
+}
+},
+"additionalProperties": false
+},
+"TagRequestDto": {
+"type": "object",
+"properties": {
+"name": {
+"type": "string",
+"nullable": true
+}
+},
+"additionalProperties": false
+},
+"UpdateInvitationRequestDto": {
+"type": "object",
+"properties": {
+"id": {
+"type": "string",
+"format": "uuid"
+},
+"invitationStatus": {
+"$ref": "#/components/schemas/InvitationStatus"
+}
+},
+"additionalProperties": false
+},
+"UpdateKycStatusRequest": {
+"type": "object",
+"properties": {
+"userId": {
+"type": "string",
+"format": "uuid"
+},
+"kycStatus": {
+"$ref": "#/components/schemas/KycStatus"
+}
+},
+"additionalProperties": false
+},
+"UpdatePaymentRequestDto": {
+"type": "object",
+"properties": {
+"id": {
+"type": "string",
+"format": "uuid"
+},
+"createdOn": {
+"type": "string",
+"format": "date-time",
+"nullable": true
+},
+"updatedOn": {
+"type": "string",
+"format": "date-time",
+"nullable": true
+},
+"isDeleted": {
+"type": "boolean"
+},
+"createdBy": {
+"type": "string",
+"format": "uuid"
+},
+"updatedBy": {
+"type": "string",
+"format": "uuid"
+},
+"transactionId": {
+"type": "string",
+"nullable": true
+},
+"paymentId": {
+"type": "string",
+"nullable": true
+},
+"userId": {
+"type": "string",
+"nullable": true
+},
+"planId": {
+"type": "string",
+"nullable": true
+}
+},
+"additionalProperties": false
+},
+"UserDto": {
+"type": "object",
+"properties": {
+"userType": {
+"type": "string",
+"nullable": true
+},
+"pageNumber": {
+"type": "integer",
+"format": "int32"
+},
+"pageSize": {
+"type": "integer",
+"format": "int32"
+}
+},
+"additionalProperties": false
+},
+"UserRequestDto": {
+"type": "object",
+"properties": {
+"roleId": {
+"type": "string",
+"format": "uuid",
+"nullable": true
+},
+"firstName": {
+"type": "string",
+"nullable": true
+},
+"lastName": {
+"type": "string",
+"nullable": true
+},
+"phoneNumber": {
+"type": "string",
+"nullable": true
+},
+"email": {
+"type": "string",
+"nullable": true
+},
+"pageNumber": {
+"type": "integer",
+"format": "int32"
+},
+"pageSize": {
+"type": "integer",
+"format": "int32"
+}
+},
+"additionalProperties": false
+},
+"UserRoleType": {
+"enum": [
+1,
+2,
+3
+],
+"type": "integer",
+"format": "int32"
+},
+"UserSearchDto": {
+"type": "object",
+"properties": {
+"role": {
+"type": "string",
+"nullable": true
+},
+"serachItem": {
+"type": "string",
+"nullable": true
+},
+"pageNumber": {
+"type": "integer",
+"format": "int32"
+},
+"pageSize": {
+"type": "integer",
+"format": "int32"
+}
+},
+"additionalProperties": false
+},
+"UserUpdateRequestDto": {
+"type": "object",
+"properties": {
+"firstName": {
+"type": "string",
+"nullable": true
+},
+"lastName": {
+"type": "string",
+"nullable": true
+},
+"phoneNumber": {
+"type": "string",
+"nullable": true
+},
+"email": {
+"type": "string",
+"nullable": true
+}
+},
+"additionalProperties": false
+},
+"WeatherForecast": {
+"type": "object",
+"properties": {
+"date": {
+"type": "string",
+"format": "date-time"
+},
+"temperatureC": {
+"type": "integer",
+"format": "int32"
+},
+"temperatureF": {
+"type": "integer",
+"format": "int32",
+"readOnly": true
+},
+"summary": {
+"type": "string",
+"nullable": true
+}
+},
+"additionalProperties": false
+},
+"WorkingTypes": {
+"enum": [
+1,
+2
+],
+"type": "integer",
+"format": "int32"
+}
+},
+"securitySchemes": {
+"Bearer": {
+"type": "apiKey",
+"description": "JWT Authorization header using the Bearer scheme.",
+"name": "Authorization",
+"in": "header"
+}
+}
+},
+"security": [
+{
+"Bearer": []
+}
+]
+}
